@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ArtsApp/static/css/main.736107f2.css",
-    "main.js": "/ArtsApp/static/js/main.f5da57fc.js",
+    "main.css": "/ArtsApp/static/css/main.d0037b01.css",
+    "main.js": "/ArtsApp/static/js/main.d4ed2ff2.js",
     "index.html": "/ArtsApp/index.html",
-    "main.736107f2.css.map": "/ArtsApp/static/css/main.736107f2.css.map",
-    "main.f5da57fc.js.map": "/ArtsApp/static/js/main.f5da57fc.js.map"
+    "main.d0037b01.css.map": "/ArtsApp/static/css/main.d0037b01.css.map",
+    "main.d4ed2ff2.js.map": "/ArtsApp/static/js/main.d4ed2ff2.js.map"
   },
   "entrypoints": [
-    "static/css/main.736107f2.css",
-    "static/js/main.f5da57fc.js"
+    "static/css/main.d0037b01.css",
+    "static/js/main.d4ed2ff2.js"
   ]
 }
