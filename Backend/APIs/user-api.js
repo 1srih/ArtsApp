@@ -35,6 +35,7 @@ userApp.post("/auth/login", expressAsyncHandler(login));
 // Get user profile
 userApp.get("/users/:username", verifyToken , expressAsyncHandler(async(req, res)=>{
     const profile = await usersCollection.findOne({username:req.params.username})
+    if(profile == null) res.send("user does not exist")
     res.send({message:'User\'s Profile',payload:profile})
 }));
 
@@ -42,7 +43,7 @@ userApp.get("/users/:username", verifyToken , expressAsyncHandler(async(req, res
 userApp.put("/users/:username", verifyToken ,expressAsyncHandler( async(req, res) => {
     const updatedProfile = req.body
     await usersCollection.updateOne({ username: req.params.username },{$set:{...updatedProfile}})
-    res.send({message:"Profile Changes Successful"})
+    res.send({message:"Profile Changes Successful",payload:updatedProfile})
 }));
 
 // Get user’s cart
@@ -91,9 +92,9 @@ userApp.get("/orders/:orderId", verifyToken ,expressAsyncHandler( async(req, res
 })); 
 
 // Cancel order
-userApp.put("/orders/:orderId", verifyToken ,expressAsyncHandler( async(req, res) => {
+userApp.put("/users/:userId/orders/:orderId", verifyToken ,expressAsyncHandler( async(req, res) => {
     const order = await ordersCollection.updateOne({_id:new ObjectId(req.params.orderId)},{$set:{ status: req.body.status,modifyTime: req.body.modifyTime}})
-    await usersCollection.updateOne({ _id:new ObjectId(order.userId) }, { $set: { "orders.$[elem].status": req.body.status, "orders.$[elem].modifyTime": req.body.modifyTime }},{arrayFilters: [{ "elem.orderId": new ObjectId(req.params.orderId) }] });
+    await usersCollection.updateOne({ _id:new ObjectId(req.params.userId) }, { $set: { "orders.$[elem].status": req.body.status, "orders.$[elem].modifyTime": req.body.modifyTime }},{arrayFilters: [{ "elem.orderId": new ObjectId(req.params.orderId) }] });
     res.send({message:'Order cancelled'})
 })); 
 
