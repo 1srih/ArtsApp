@@ -4,12 +4,12 @@ Content-Type: application/json
 
 {   
     "userType":"user",
-    "username": "new_user",
-    "email": "new@example.com",
-    "password": "secureword123",
-    "name": "new user",
+    "username": "keli",
+    "email": "keli@example.com",
+    "password": "kelipassword",
+    "name": "Keli",
     "phone": "+1234567890",
-    "address": "fhde street,abc",
+    "address": "keli street,abc",
     "cart":[],
     "orders":[]
 }
@@ -20,12 +20,12 @@ Content-Type: application/json
 
 {
     "userType":"admin",
-    "username": "johnny_ohnny",
-    "email": "johnny@example.com",
-    "password": "securepassword12",
-    "name": "Johnny",
+    "username": "admin_keli",
+    "email": "keli@example.com",
+    "password": "keliadmin",
+    "name": "Keli",
     "phone": "+1234567890",
-    "address": "abc street,abc"
+    "address": "keli street,abc"
 }
 
 
@@ -35,8 +35,8 @@ Content-Type: application/json
 
 {
     "userType":"user",
-    "username": "new_user",
-    "password": "secureword123"
+    "username": "keli",
+    "password": "kelipassword"
 }
 
 ###Sign in (Authenticate admin)
@@ -45,55 +45,53 @@ Content-Type: application/json
 
 {
     "userType":"admin",
-    "username": "johnnyo",
-    "password": "securepassword12"
+    "username": "admin_keli",
+    "password": "keliadmin"
 }
 
 
 ###Get user profile
-GET http://localhost:5000/user-api/users/new_user 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
+GET http://localhost:5000/user-api/users/keli
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
+
 
 ###Update user profile
-PUT http://localhost:5000/user-api/users/john_doe 
+PUT http://localhost:5000/user-api/users/keli
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
-    "email": "newemail@example.com",
-    "name": "John Doe Updated new",
-    "phone": "+1234567899",
-    "address": "Updated Address, City, Country"
+    "email": "newkeli@example.com"
 }
 
 ###Get user’s cart
-GET http://localhost:5000/user-api/users/67ec3d268740fb6168961d84/cart 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
+GET http://localhost:5000/user-api/users/67fd387b2dc2c72eb6d1d6fc/cart 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 ###Add item to cart
-POST http://localhost:5000/user-api/users/67ec3d268740fb6168961d84/cart 
+POST http://localhost:5000/user-api/users/67fd387b2dc2c72eb6d1d6fc/cart 
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
     "artId": "67eacf83f17206741b0dcb22",
-    "quantity":3,
+    "quantity":9999,
     "deleted":false
 }
 
 ###Remove item from cart
-PUT http://localhost:5000/user-api/users/67ec3d268740fb6168961d84/cart/67eacf83f17206741b0dcb22
+PUT http://localhost:5000/user-api/users/67fd387b2dc2c72eb6d1d6fc/cart/67eacf83f17206741b0dcb22
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 ###Get user’s order history(Orders Requests)
-GET http://localhost:5000/user-api/users/67ec3d268740fb6168961d84/orders
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
+GET http://localhost:5000/user-api/users/67fd387b2dc2c72eb6d1d6fc/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 ###Place an order
-POST http://localhost:5000/user-api/users/67ec3d268740fb6168961d84/orders 
+POST http://localhost:5000/user-api/users/67fd387b2dc2c72eb6d1d6fc/orders 
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
     "items":[
@@ -110,11 +108,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld
 
 
 ###Track Order
-GET http://localhost:5000/user-api/orders/67ec4a0332ac60a0fe204199
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
+GET http://localhost:5000/user-api/orders/67fd3a992dc2c72eb6d1d6fe
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 ###Cancel Order
-PUT http://localhost:5000/user-api/orders/67ec4a0332ac60a0fe204199
+PUT http://localhost:5000/user-api/users/67fd387b2dc2c72eb6d1d6fc/orders/67fd3a992dc2c72eb6d1d6fe
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
 
@@ -126,11 +124,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld
 GET http://localhost:5000/user-api/gallery 
 
 ###Get single artwork details
-GET http://localhost:5000/user-api/gallery/67eacae69151f5c4e1c0418d
+GET http://localhost:5000/user-api/gallery/67fd3ea184193a23ab334b70
 
 ###Like an artwork
-PUT http://localhost:5000/user-api/gallery/67eacae69151f5c4e1c0418d/like
+PUT http://localhost:5000/user-api/gallery/67fd3ea184193a23ab334b70/like
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld191c2VyIiwiaWF0IjoxNzQzNTM1NDA1fQ.KCvoomdF20p4ilDNaISZApSuGEMX1Oave9Rzpz_YbAk
 
 {
     "like": true
@@ -142,13 +141,13 @@ GET http://localhost:5000/user-api/events
 
 
 ###Get event details
-GET http://localhost:5000/user-api/events/67ead3def17206741b0dcb27
+GET http://localhost:5000/user-api/events/67fd410084193a23ab334b75
 
 ###Get all courses
 GET http://localhost:5000/user-api/courses 
 
 ###Get course details
-GET http://localhost:5000/user-api/courses/67eacaf5dc157ee24c8e3f28
+GET http://localhost:5000/user-api/courses/67fd419b84193a23ab334b76
 
 ###Submit help request
 POST http://localhost:5000/user-api/helpQueries 
@@ -156,7 +155,7 @@ Content-Type: application/json
 
 {
     "username": "123456",
-    "message": "I need help with my account access.",
+    "message": "keli's help request",
     "subject": "Account Issues",
     "timestamp": "{{$datetime iso8601}}",
     "deleted":false
@@ -166,12 +165,13 @@ Content-Type: application/json
 ### Add new artwork  (admin requests)
 POST http://localhost:5000/admin-api/gallery  
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluX2tlbGkiLCJpYXQiOjE3NDQ2NDg0NTh9.xFoFVsuMsnKOSTnlX4A7DaAMUodkDJPaQYZIQT3hfIs
 
 {
-    "title": "Sunset Bliss new",
-    "artist": "John Doe",
-    "description": "A beautiful sunset over the mountains.",
-    "price": 200,
+    "title": "Keli new art",
+    "artist": "keli artist",
+    "description": "Lovely keli",
+    "price": 9000,
     "likes": 0,
     "deleted": false
 }
@@ -179,35 +179,38 @@ Content-Type: application/json
 
 
 ### Update/Delete artwork  
-PUT http://localhost:5000/admin-api/gallery/67ea512fd89768c8a99bdf71  
+PUT http://localhost:5000/admin-api/gallery/67fd3eef84193a23ab334b72  
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluX2tlbGkiLCJpYXQiOjE3NDQ2NDg0NTh9.xFoFVsuMsnKOSTnlX4A7DaAMUodkDJPaQYZIQT3hfIs
 
 {
-    "title": "Sunset Bliss new",
-    "price": 15346,
+    "title": "super keli",
+    "price": 2005,
     "deleted": false
 }
 
 ### Create new event  
 POST http://localhost:5000/admin-api/events  
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
-    "title": "My chill event",
-    "startDate": "2024-06-15T00:00:00.000Z",
-    "endDate":"2024-06-20T00:00:00.000Z",
-    "location": "New York, USA",
-    "description": "An exclusive art event featuring top artists.",
+    "title": "keli's event future",
+    "startDate": "2025-06-15T00:00:00.000Z",
+    "endDate":"2025-06-20T00:00:00.000Z",
+    "location": "keli's home",
+    "description": "An exclusive art event featuring keli's arts.",
     "deleted":false
 }
 
 
 ### Update event details  
-PUT http://localhost:5000/admin-api/events/67eacfbbf17206741b0dcb23 
+PUT http://localhost:5000/admin-api/events/67fd410084193a23ab334b75 
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
-    "title": "My chill - Super Updated",
+    "title": "keli's Updated event",
     "location":"Hyderabad",
     "deleted": false
 }
@@ -216,32 +219,36 @@ Content-Type: application/json
 ### Create new course  
 POST http://localhost:5000/admin-api/courses  
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
-    "title": "Some Techniques",
-    "instructor": "Jane Doe",
-    "duration": "27 weeks",
-    "price": 100,
-    "loaction":"Warangal",
+    "title": "keli's Techniques",
+    "instructor": "keli",
+    "duration": "20 weeks",
+    "price": 5,
+    "loaction":"keli's home",
     "mode":"Online & Offline",
     "deleted":false
 }
 
 ### Update/delete course details  
-PUT http://localhost:5000/admin-api/courses/67eacfbbf17206741b0dcb23
+PUT http://localhost:5000/admin-api/courses/67fd419b84193a23ab334b76
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
-    "price": 5000,
-    "deleted": false
+    "price": 999,
+    "deleted": true
 }
 
 ### Get all help queries  
 GET http://localhost:5000/admin-api/helpQueries  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 ### Delete a help query  
-PUT http://localhost:5000/admin-api/helpQueries/67ea532bd89768c8a99bdf74
+PUT http://localhost:5000/admin-api/helpQueries/67fd3eeb84193a23ab334b71
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtlbGkiLCJpYXQiOjE3NDQ2NDgzNjh9.HeMpPNpR8YUckTulNIyfUcTeGj1dIR1F6KsBdDngzkQ
 
 {
     "deleted": true
