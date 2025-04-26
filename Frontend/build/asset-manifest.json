@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ArtsApp/static/css/main.86442224.css",
+    "main.js": "/ArtsApp/static/js/main.da25c946.js",
+    "index.html": "/ArtsApp/index.html",
+    "main.86442224.css.map": "/ArtsApp/static/css/main.86442224.css.map",
+    "main.da25c946.js.map": "/ArtsApp/static/js/main.da25c946.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86442224.css",
+    "static/js/main.da25c946.js"
+  ]
+}

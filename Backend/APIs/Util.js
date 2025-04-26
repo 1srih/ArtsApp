@@ -74,7 +74,7 @@ const login = async(req,res)=>{
         }
 
         //verify password
-        let status = bcryptjs.compare(userCredentials.password,dbuser.password)
+        let status = await bcryptjs.compare(userCredentials.password,dbuser.password)
 
         if(status === false){
             return res.send({message:'incorrect password'})

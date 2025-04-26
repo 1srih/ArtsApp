@@ -1,6 +1,7 @@
 const exp=require("express")
 const { ObjectId } = require("mongodb")
 const verifyToken = require("../Middlewares/verifyToken");
+const upload = require('../Middlewares/upload');
 
 const adminApp = exp.Router()
 
@@ -34,11 +35,29 @@ adminApp.post("/auth/login", expressAsyncHandler(login));
 // Admin Routes
 
 // Add new artwork
-adminApp.post("/gallery",  verifyToken ,expressAsyncHandler(async(req, res) => {
-    const art = req.body
-    await artsCollection.insertOne(art)
-    res.send({message:'Added Artwork'})
-}));
+// adminApp.post("/gallery",  verifyToken ,expressAsyncHandler(async(req, res) => {
+//     const art = req.body
+//     await artsCollection.insertOne(art)
+//     res.send({message:'Added Artwork'})
+// }));
+
+
+adminApp.post(
+    "/gallery",
+    verifyToken,
+    upload.array("images"), // accept multiple images, or use .single('image') for one
+    expressAsyncHandler(async (req, res) => {
+      const imageUrls = req.files.map(file => file.path); // Cloudinary URLs
+  
+      const newArtwork = {
+        ...req.body,
+        images: imageUrls,
+      };
+  
+      await artsCollection.insertOne(newArtwork);
+      res.send({ message: "Added Artwork", artwork: newArtwork });
+    })
+  );
 
 // Update/Delete artwork
 adminApp.put("/gallery/:id", verifyToken , expressAsyncHandler(async(req, res) => {
@@ -47,9 +66,32 @@ adminApp.put("/gallery/:id", verifyToken , expressAsyncHandler(async(req, res) =
 }));
 
 // Create new event
-adminApp.post("/events", verifyToken , expressAsyncHandler(async(req, res) => {
-    await eventsCollection.insertOne(req.body)
-    res.send({message : "Event created successfully"})
+// adminApp.post("/events", verifyToken , expressAsyncHandler(async(req, res) => {
+//     await eventsCollection.insertOne(req.body)
+//     res.send({message : "Event created successfully"})
+// }));
+
+adminApp.post("/events",upload.array('images'), verifyToken , expressAsyncHandler(async(req, res) => {
+    try {
+        // Extract image URLs from Cloudinary (from req.files)
+        const imageUrls = req.files.map(file => file.path); // Cloudinary provides the file URL
+  
+        // Create the event object with data from request body and Cloudinary URLs
+        const newEvent = {
+          ...req.body, // includes text data (title, description, etc.)
+          images: imageUrls, // Add Cloudinary URLs of the images
+        };
+  
+        // Insert the event into your MongoDB collection
+        await eventsCollection.insertOne(newEvent);
+  
+        // Send a success message back
+        res.send({ message: 'Event created successfully', event: newEvent });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'Error creating event', error });
+   
+    }
 }));
 
 // Update/Delete event details

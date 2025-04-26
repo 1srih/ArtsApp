@@ -1,12 +1,12 @@
 import React from 'react';
 import { Palette, Search, ShoppingCart, User, Sun, Moon, Menu } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import './Header.css';
 
 function Header({ isDarkMode, toggleDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   return (
     <header className="header">
       <div className="container">
@@ -27,7 +27,7 @@ function Header({ isDarkMode, toggleDarkMode }) {
           </div>
           
           <div className="header-actions">
-            <User size={24} />
+            <User size={24} onClick={()=> {navigate('/SignUp')}}/>
             <ShoppingCart size={24} />
             <button className="theme-toggle" onClick={toggleDarkMode}>
               {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
