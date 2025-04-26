@@ -6,6 +6,8 @@ import Home from './components/Home/Home.jsx';
 import Collaborate from './components/Collaborate/Collaborate.jsx'; 
 import Contact from './components/Contact/Contact.jsx';
 import Gallery from './components/Gallery/Gallery.jsx';
+import SignUp from './components/SignUp/SignUp.jsx';
+import SignIn from './components/SignIn/SignIn.jsx';
 import './styles/global.css';
 import { useState, useEffect } from 'react';
 
@@ -36,6 +38,8 @@ function App() {
           <Route path="/contact" element={<Contact />} /> 
           <Route path="/collaborate" element={<Collaborate/>} />
           <Route path="/gallery" element={<Gallery/>} />
+          <Route path="/signup" element={<SignUp/>} />
+          <Route path="/signin" element={<SignIn/>} />
           {/* Wildcard route to catch all undefined paths */}
           <Route path="*" element={<Home />} />
         </Routes>

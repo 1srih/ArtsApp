@@ -1,9 +1,11 @@
 const exp =require('express')
+const path = require('path')
 const app = exp()
 
 require('dotenv').config()
 
 app.use(exp.json())
+app.use("/ArtsApp", exp.static(path.join(__dirname,'../frontend/build')))
 
 const mongoClient = require('mongodb').MongoClient
 mongoClient.connect(process.env.DB_URL)
